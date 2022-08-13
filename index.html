@@ -23,7 +23,21 @@
       $.get("./js/mahjong.json", function (_rawData) {
         run(_rawData);
       });
-      function run(_rawData) {
+      function data_to_render(raw_data) {
+        data = [["score", "round", "name"]]
+        const names = ["翔", "盛", "鱼", "珂"]
+        init = [0.0, 0.0, 0.0, 0.0]
+        for (j = 0; j < raw_data.length; j++) { 
+          for (i = 0; i < 4; i++) {
+            init[i] += raw_data[j][i]
+            init[i] = Math.floor(init[i] * 100) / 100
+            data.push([init[i], j + 1, names[i]])
+          }
+        }
+        return data;
+      }
+      function run(rawData) {
+        _rawData = data_to_render(rawData);
         const names = ["翔", "盛", "鱼", "珂"];
         const datasetWithFilters = [];
         const seriesList = [];
