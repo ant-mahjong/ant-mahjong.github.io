@@ -31,7 +31,7 @@
           for (i = 0; i < 4; i++) {
             init[i] += raw_data[j][i]
             init[i] = Math.floor(init[i] * 100) / 100
-            data.push([init[i], j + 1, names[i]])
+            data.push([init[i], j, names[i]])
           }
         }
         return data;
